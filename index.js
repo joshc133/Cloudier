@@ -1,10 +1,10 @@
 const {app, BrowserWindow} = require('electron')
 
-function createWindow() {
+function createMainWindow() {
   // Create the browser window.
   const win = new BrowserWindow({
 		title: app.getName(),
-		show: true,
+		show: false,
 		x: 0,
 		y: 0,
 		width: 1600,
@@ -14,7 +14,7 @@ function createWindow() {
 		minHeight: 600,
 		alwaysOnTop: false,
 		titleBarStyle: 'hiddenInset',
-		autoHideMenuBar: false,
+		autoHideMenuBar: true,
 		darkTheme: false, // GTK+3
 		webPreferences: {
 			preload: 'browser.js',
@@ -25,6 +25,18 @@ function createWindow() {
 	});
 
   win.loadURL('https://www.icloud.com/');
+
+  return win;
 }
 
-app.on('ready', createWindow)
+(async () => {
+  await app.whenReady();
+
+  mainWindow = createMainWindow();
+
+  const {webContents} = mainWindow;
+
+  webContents.on('dom-ready', () => {
+    mainWindow.show();
+  });
+})();
