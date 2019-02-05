@@ -1,0 +1,14 @@
+/* Targets the launchpad background */
+html {
+  background: #111 !important;
+}
+
+/* Targets the launchpad moving bubbles */
+html #sc1235 div {
+  filter: saturate(80%) brightness(50%);
+}
+
+/* Targets the launchpad app icons */
+html #sc1672 a {
+  filter: brightness(90%);
+}

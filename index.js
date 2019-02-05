@@ -1,4 +1,6 @@
-const {app, BrowserWindow} = require('electron')
+const {readFileSync} = require('fs');
+const {app, BrowserWindow} = require('electron');
+const path = require('path');
 
 function createMainWindow() {
   // Create the browser window.
@@ -17,7 +19,7 @@ function createMainWindow() {
 		autoHideMenuBar: true,
 		darkTheme: false, // GTK+3
 		webPreferences: {
-			preload: 'browser.js',
+			preload: path.join(__dirname, 'browser.js'),
 			nodeIntegration: false,
 			contextIsolation: true,
 			plugins: true
@@ -37,6 +39,8 @@ function createMainWindow() {
   const {webContents} = mainWindow;
 
   webContents.on('dom-ready', () => {
+    webContents.insertCSS(readFileSync(path.join(__dirname, 'css', 'dark-mode.css'), 'utf8'));
+    // webContents.openDevTools();
     mainWindow.show();
   });
 })();
