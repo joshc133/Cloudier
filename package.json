@@ -1,7 +1,18 @@
 {
   "name": "cloudier",
+  "productName": "Cloudier",
   "version": "1.0.0",
   "description": "Electron-based iCloud application for Windows & Linux",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshc133/Cloudier.git"
+  },
+  "author": {
+    "name": "Joshua Carroll",
+    "email": "joshc133@gmail.com",
+    "url": "https://github.com/joshc133/Cloudier#readme"
+  },
   "main": "index.js",
   "scripts": {
     "start": "electron .",
@@ -17,8 +28,6 @@
     "iPhone",
     "Electron"
   ],
-  "author": "Joshua Carroll",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/joshc133/Cloudier/issues"
   },
